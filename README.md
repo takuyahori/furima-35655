@@ -17,21 +17,21 @@
 
 - has_many :items
 - has_many :comments
-- has_one :purchase
+- has_many :purchases
+- has_one :address
 
 ## items テーブル
 
-| Column         | Type         | Options                        |
-| -------------- | ------------ | ------------------------------ |
-| name           | string       | null: false                    |
-| explanation    | string       |                                |
-| size           | integer      |                                |
-| status         | string       | null: false                    |
-| shipping_cost  | string       | null: false                    |
-| shipping_area  | string       | null: false                    |
-| shippinng_days | integer      | null: false                    |
-| price          | integer      | null: false                    |
-| user           | references   | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| explanation      | string     | null: false                    |
+| status_id        | integer    | null: false                    |
+| shipping_cost_id | integer    | null: false                    |
+| shipping_area_id | integer    | null: false                    |
+| shipping_days_id | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -40,15 +40,26 @@
 - has_one :brand
 - belongs_to :user
 
+## address テーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| post_code       | string     | null: false                    |
+| prefecture      | string     | null: false                    |
+| city            | string     | null: false                    |
+| address         | string     | null: false                    |
+| building_name   | string     |                                |
+| phone           | string     | null: false                    |
+| user            | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+
 ## purchase テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| post_code       | integer    | null: false                    |
-| city            | string     | null: false                    |
-| address         | integer    | null: false                    |
-| building_name   | string     |                                |
-| phone           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 | item            | references | null: false, foreign_key: true |
 
@@ -59,11 +70,11 @@
 
 ## comments テーブル
 
-| Column  | Type    | Options                        |
-| ------- | ------- | ------------------------------ |
-| text    | string  | null: false                    |
-| user_id | integer | null: false, foreign_key: true |
-| item_id | integer | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| -------| ---------- | ------------------------------ |
+| text   | string     | null: false                    |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -72,10 +83,10 @@
 
 ## brand テーブル
 
-| Column  | Type    | Options                        |
-| ------- | ------- | ------------------------------ |
-| name    | text    | null: false                    |
-| item_id | integer | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| name    | text       | null: false                    |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
