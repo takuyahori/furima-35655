@@ -50,11 +50,11 @@
 | address          | string     | null: false                    |
 | building_name    | string     |                                |
 | phone            | string     | null: false                    |
+| purchase         | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :purchase
-
+- belongs_to :purchase
 
 ## purchases テーブル
 
@@ -62,34 +62,9 @@
 | --------------- | ---------- | ------------------------------ |
 | user            | references | null: false, foreign_key: true |
 | item            | references | null: false, foreign_key: true |
-| address         | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item  
-- belongs_to :address
-
-## comments テーブル
-
-| Column | Type       | Options                        |
-| -------| ---------- | ------------------------------ |
-| text   | string     | null: false                    |
-| user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
-
-## brand テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| name    | text       | null: false                    |
-| item    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :item
+- has_one :address
