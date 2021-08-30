@@ -16,7 +16,6 @@
 ### Association
 
 - has_many :items
-- has_many :comments
 - has_many :purchases
 
 ## items テーブル
@@ -29,15 +28,13 @@
 | status_id        | integer    | null: false                    |
 | shipping_cost_id | integer    | null: false                    |
 | shipping_area_id | integer    | null: false                    |
-| shipping_days_id | integer    | null: false                    |
+| shipping_day_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_many :comments
 - has_one :purchase
-- has_one :brand
 - belongs_to :user
 
 ## addresses テーブル
