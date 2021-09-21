@@ -7,7 +7,7 @@ class PurchaseAddress
  validates :shipping_area_id, numericality: { other_than: 1 }
 
   with_options presence: true do
-    validates :post_code, format: { with: /\A\d{3}[-]?\d{4}\z/ }
+    validates :post_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/}
     validates :city
     validates :address
     validates :phone, format: { with: /\A\d{11}\z/ }
