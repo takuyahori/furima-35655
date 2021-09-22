@@ -2,7 +2,7 @@ class PurchaseAddress
 
   include ActiveModel::Model
   
-  attr_accessor :post_code, :shipping_area_id, :city, :address, :building_name, :phone, :purchase, :user_id, :item_id
+  attr_accessor :post_code, :shipping_area_id, :city, :address, :building_name, :phone, :purchase, :user_id, :item_id, :token
 
  validates :shipping_area_id, numericality: { other_than: 1 }
 
@@ -13,6 +13,7 @@ class PurchaseAddress
     validates :phone, format: { with: /\A\d{11}\z/ }
     validates :user_id
     validates :item_id
+    validates :token
   end
 
   def save
