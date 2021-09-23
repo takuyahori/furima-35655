@@ -4,10 +4,8 @@ class PurchasesController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @purchase_address = PurchaseAddress.new
-    if current_user.id == @item.user_id
+    if current_user.id == @item.user_id || @item.purchase.present?
       redirect_to root_path
-    else @item.purchase.present?
-        redirect_to root_path
     end
   end
 
